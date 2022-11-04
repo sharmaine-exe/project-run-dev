@@ -5,7 +5,7 @@ It will be completed using Next.js and Tailwind CSS
 Starter files were provided by the instructor in class. 
 ### Part 1: Setting up the enviroment
 *   Copy the starter files
-*   Add the node_modules (`npm run dev` in powershell) 
+*   Add the node_modules (`npm install` in powershell) 
 *   Set up `.git-ignore`
 *   Push the starter files to GitHub
 ### Part 2: Assessment 1 submission

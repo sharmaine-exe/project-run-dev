@@ -4,8 +4,8 @@ export default function Home() {
         
  
           <header >
-             <h1>Next.js</h1>
-             <p>next + tailwind starter kit</p>
+             <h1>project run dev</h1>
+             <p>the search for your next greatest developer</p>
           </header>
           
      
