@@ -13,7 +13,7 @@ Starter files were provided by the instructor in class.
     * new title and tagline
     * new favicon
     * check SEO
-*   create `_document.js` insidefile to inject meta tags to the head of html and add: 
+*   create `_document.js` file inside the  `pages` folder to inject meta tags to the head of html and add: 
     ```
     import Document, {Head, Html, Main, NextScript} from "next/document";
 
