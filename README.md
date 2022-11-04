@@ -13,7 +13,32 @@ Starter files were provided by the instructor in class.
     * new title and tagline
     * new favicon
     * check SEO
-*   add `_document.js` file to inject meta tags to the head of html
+*   create `_document.js` insidefile to inject meta tags to the head of html and add: 
+    ```
+    import Document, {Head, Html, Main, NextScript} from "next/document";
+
+    class MyDocument extends Document {
+        static async getInitialProps(context){
+            const initialProps = await Document.getInitialProps(context);
+            return { ...initialProps};
+        }
+
+        render(){
+            return (
+                <Html lang={this.props.locale}>
+                    <Head>
+                    </Head>
+                    <body>
+                        <Main />
+                        <NextScript />
+                    </body>
+                </Html>
+            );
+        }
+    }
+
+    export default MyDocument;
+    ```
 *   add to `next.config.js`:
     ```
     i18n: {
@@ -26,7 +51,7 @@ Starter files were provided by the instructor in class.
     npm run dev // not optimized
     npm run build // for production, page optimized
     npm run start // the production build (test for SEO)
-*   add a `<meta description="" />` to optimize more
+*   add a `<meta name="description" content="..."  />` to optimize more
 *   style index.js
 ### Part 2B: Assessment 1 submission
 *   Build the header component that accepts `props` to add dynamic title and dynamic tagline
