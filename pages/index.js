@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { PageHeading } from '../components/page-heading'
 
 export default function Home() {
   return (
@@ -9,11 +10,8 @@ export default function Home() {
             <title>Project Run Dev</title>
             {/* link to favicon now moved to _document.js */}
           </Head>
-          <header className='text-center py-[10rem] bg-rose-100'>
-            <img className="w-[98px] mx-auto " src="myfavicon.svg" alt="project run dev" />
-            <h1 className='text-6xl text-red-500'>project run dev</h1>
-            <p className='text-xl mt-2'>The search for your next greatest developer</p>
-          </header>
+          <PageHeading title="project run dev"
+            tagline="The search for your next greatest developer" />
         </>
 
           
