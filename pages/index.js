@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { PageHeading } from '../components/page-heading'
+import { LandingPageHeader } from '../components/headers'
 import { NavBar } from './../components/navigation'
 
 export default function Home() {
@@ -7,11 +7,10 @@ export default function Home() {
         
         <>
           <Head>
-            
             <title>Project Run Dev</title>
             {/* link to favicon now moved to _document.js */}
           </Head>
-          <PageHeading 
+          <LandingPageHeader 
             title="project run dev"
             tagline="The search for your next greatest developer" />
           <main>

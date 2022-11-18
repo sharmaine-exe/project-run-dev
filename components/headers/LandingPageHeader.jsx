@@ -1,7 +1,7 @@
 import Image from "next/image"
 import bannerImage from './../../public/banner.svg'
 
-function PageHeading({tagline, title, ...props}){
+function LandingPageHeader({tagline, title, ...props}){
     return (
         <header className='text-center py-[5rem] px-5 bg-rose-100'>
             <figure className="flex flex-col md:flex-row md:justify-center
@@ -21,4 +21,4 @@ function PageHeading({tagline, title, ...props}){
     )
 }
 
-export default PageHeading
+export default LandingPageHeader

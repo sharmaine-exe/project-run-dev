@@ -56,15 +56,15 @@ Starter files were provided by the instructor in class.
 ### Part 2B: Assessment 1 submission: Header Component
 *   Build the header component that accepts `props` to add dynamic title and dynamic tagline
     *  Create new folder `components` and add `page-heading`
-        *   This will be the PageHeading component
-        *   `PageHeading.jsx` to be exported to the main index page (`pages/index.js`) using `index.js` of PageHeading.
+        *   This will be the LandingPageHeader component
+        *   `LandingPageHeader.jsx` to be exported to the main index page (`pages/index.js`) using `index.js` of LandingPageHeader.
         *   Style each markup through Tailwind CSS 
         *   Add custom image
         ```jsx
         import Image from "next/image"
         import bannerImage from './../../public/banner.svg'
 
-        function PageHeading({tagline, title, ...props}){
+        function LandingPageHeader({tagline, title, ...props}){
             return (
                 <header className='text-center py-[5rem] px-5 bg-rose-100'>
                     <figure className="flex flex-col md:flex-row md:justify-center
@@ -84,7 +84,7 @@ Starter files were provided by the instructor in class.
             )
         }
 
-        export default PageHeading'
+        export default LandingPageHeader'
         ```
 ### Part 2C: Adding Navigation (NavBar Component)
 *   Build the navigation bar component that contains the logo, heading, and links for menu.
@@ -189,7 +189,7 @@ Starter files were provided by the instructor in class.
                             <title>Project Run Dev</title>
                             {/* link to favicon now moved to _document.js */}
                         </Head>
-                        <PageHeading title="project run dev"
+                        <LandingPageHeader title="project run dev"
                             tagline="The search for your next greatest developer" />
                         </>
 
@@ -198,3 +198,59 @@ Starter files were provided by the instructor in class.
                 }
 
         ```
+### Part 3: Adding Site Navigation (routing links)
+#### ContentPageHeader will be reused across all the pages.
+```jsx
+function ContentPageHeader({title, tagline, type}) {
+    return (
+    <>
+        <header className="text-center mt-20">
+            <h1 className="text-lg font-semibold text-red-500">
+                {type}
+            </h1>
+            <p className="mt-1 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                {title}
+            </p>
+            <p className="mx-auto mt-5 max-w-xl text-xl text-gray-500">
+                {tagline}
+            </p>
+        </header>
+    </>
+    );
+}
+
+export default ContentPageHeader;
+```
+#### This will be added to each page, with dynamic type, title, and tagline values. Sample for UI/UX:
+```jsx
+function ContentPageHeader({title, tagline, type}) {
+    return (
+    <>
+        <header className="text-center mt-20">
+            <h1 className="text-lg font-semibold text-red-500">
+                {type}
+            </h1>
+            <p className="mt-1 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                {title}
+            </p>
+            <p className="mx-auto mt-5 max-w-xl text-xl text-gray-500">
+                {tagline}
+            </p>
+        </header>
+    </>
+    );
+}
+
+export default ContentPageHeader;
+```
+#### Pages:
+*    `uiux.jsx`: route: path /uiux
+*    `frontend.jsx`: route: path /frontend
+*    `backend.jsx`: route: path /backend
+*    `fullstack.jsx`: route: path /fullstack
+*    `index.js`: (landing or home page) route path /
+*    Link to github repo
+
+### Part 3A: Adding Login Page and 404 page
+*    `login.jsx`: route: path /login
+*    `404.jsx`: route: path /404

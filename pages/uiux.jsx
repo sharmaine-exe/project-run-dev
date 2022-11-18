@@ -1,7 +1,15 @@
-function UiUx() {
+import {ContentPageHeader} from './../components/headers'
+
+function UiUxPage() {
     return ( 
-        <p>The UI/UX page.</p>
+        <>
+            <ContentPageHeader 
+                type="ui-ux-developers"
+                title="UI/UX Developers"
+                tagline="the interactive user experience group"
+            />
+        </>
     );
 }
 
-export default UiUx;
+export default UiUxPage;
