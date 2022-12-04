@@ -254,3 +254,98 @@ export default ContentPageHeader;
 ### Part 3A: Adding Login Page and 404 page
 *    `login.jsx`: route: path /login
 *    `404.jsx`: route: path /404
+
+### Part 4: Adding getLayout function for each page 
+(`_app.js`) will define the function
+```jsx
+function MyApp({ Component, pageProps }) {
+
+  const getLayout = Component.getLayout || ((page) => page)
+  return (
+    <DefaultLayout>
+      {getLayout(
+        <Component {...pageProps} /> 
+      )}
+    </DefaultLayout>
+  )
+}
+```
+
+and this will be added to each page (page name will of course change)
+```jsx
+UiUxPage.getLayout = function getLayout(page){
+    return (
+        <ContentPageLayout 
+            type="ui-ux-developers"
+            title="UI/UX Developers"
+            tagline="the interactive user experience group" >
+            {page}
+        </ContentPageLayout>
+
+    )
+}
+```
+
+### Part 5: Adding the `getStaticProps()` functionality 
+for the UI/UX page sample:
+```jsx
+export async function getStaticProps(content){
+    const filePath = path.join(process.cwd(), './mock/developers.json')
+    const dev = JSON.parse(await fs.readFile(filePath, 'utf-8'))
+
+    const uiDevs = dev.filter(dev => dev.type === 'ui ux')
+
+
+    console.log("Server Code")
+    return {
+        props: {
+            ui:uiDevs
+        }
+    }
+}
+```
+We filter all the UI/UX developers from the `developer.json` file
+
+### Part 5A: Adding the properties to the DeveloperCard component
+This will help display each developer in the category. Add some styling as well.
+```jsx
+        <aside className="py-10 rounded-md shadow-sm border-2 border-zinc-300/100 w-[300px] px-4 bg-zinc-50">
+            <header className="flex flex-col items-center mb-4">
+                <Image src={avatar} alt={fullName} priority width={128} height={128}className="rounded-full" />
+                <h2 className="text-2xl font-semibold text-zinc-700">{fullName}</h2>
+            </header>
+
+            <dl className="flex flex-col items-center text-zinc-700">
+                <dt className="sr-only"></dt>
+                <dd>{jobTitle}</dd>
+
+                <dt className="sr-only"></dt>
+                <dd>{experience} years of experience</dd>
+
+                <dt className="sr-only"></dt>
+                <dd className={ `${available? variants.Unavailable : variants.Available}`}>{available? "Not Available":"Available"}</dd>
+            </dl>
+                {/* for availability, we use variants with conditional red/green styling based on the availability */}
+
+        </aside>
+```
+Make sure to map the properties out in the page you're woking on: 
+    (This one is UI/UX page)
+```jsx
+<>
+    {ui.map(dev=> 
+        <DeveloperCard 
+        key={dev.id} 
+        fullName={dev.full_name}
+        avatar={dev.avatar} 
+        jobTitle={dev.jobTitle} 
+        experience={dev.experience}
+        available={dev.available}
+        /> 
+    )}
+</>
+```
+
+
+
+

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { LandingPageHeader } from '../components/headers'
 import { NavBar } from './../components/navigation'
+import Image from 'next/image'
 
 export default function Home() {
   return (

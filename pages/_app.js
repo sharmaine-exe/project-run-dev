@@ -4,16 +4,14 @@ import '../styles/global.css'
 
 //compiles
 function MyApp({ Component, pageProps }) {
+
+  const getLayout = Component.getLayout || ((page) => page)
   return (
-  <>
-    <Head>
-      <meta name="description" content="The site aids the company to hire the best React developer candidate. Project Run Dev provides the list of best candidates for React Developers." />
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
-    </Head>
     <DefaultLayout>
-      <Component {...pageProps} />
+      {getLayout(
+        <Component {...pageProps} /> 
+      )}
     </DefaultLayout>
-    </>
   )
 }
 

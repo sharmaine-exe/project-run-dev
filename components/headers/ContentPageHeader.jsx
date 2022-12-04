@@ -16,4 +16,4 @@ function ContentPageHeader({title, tagline, type}) {
     );
 }
 
-export default ContentPageHeader;
+export default ContentPageHeader; 
