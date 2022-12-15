@@ -11,7 +11,7 @@ function UiUxPage({ui}) {
             {ui.map(dev=> 
                 <DeveloperCard 
                 key={dev.id} 
-                fullName={dev.full_name}
+                fullName={dev.fullName}
                 avatar={dev.avatar} 
                 jobTitle={dev.jobTitle} 
                 experience={dev.experience}
@@ -41,7 +41,7 @@ UiUxPage.getLayout = function getLayout(page){
 
 export async function getStaticProps(content){
     const dev = await getDevelopers();
-    const uiDevs = dev.filter(dev => dev.type === 'ui ux')
+    const uiDevs = dev.filter(dev => dev.type === 'ux ui developer')
 
 
     // console.log("Server Code")

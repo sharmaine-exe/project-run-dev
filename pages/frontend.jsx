@@ -8,7 +8,7 @@ function FrontEndPage({frontend}) {
             {frontend.map(dev=> 
                 <DeveloperCard 
                 key={dev.id} 
-                fullName={dev.full_name}
+                fullName={dev.fullName}
                 avatar={dev.avatar} 
                 jobTitle={dev.jobTitle} 
                 experience={dev.experience}
@@ -36,7 +36,7 @@ FrontEndPage.getLayout = function getLayout(page){
 
 export async function getStaticProps(content){
     const dev = await getDevelopers();
-    const frontendDevs = dev.filter(dev => dev.type === 'front-end')
+    const frontendDevs = dev.filter(dev => dev.type === 'front-end developer')
 
 
     // console.log("Server Code")

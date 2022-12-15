@@ -8,7 +8,7 @@ function FullStackPage({fullstack}) {
             {fullstack.map(dev=> 
                 <DeveloperCard 
                 key={dev.id} 
-                fullName={dev.full_name}
+                fullName={dev.fullName}
                 avatar={dev.avatar} 
                 jobTitle={dev.jobTitle} 
                 experience={dev.experience}
@@ -36,7 +36,7 @@ FullStackPage.getLayout = function getLayout(page){
 
 export async function getStaticProps(content){
     const dev = await getDevelopers();
-    const fullstackDevs = dev.filter(dev => dev.type === 'full stack')
+    const fullstackDevs = dev.filter(dev => dev.type === 'full stack developer')
 
 
     // console.log("Server Code")

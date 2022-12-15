@@ -1,6 +1,6 @@
 import ContentPageLayout from "../components/layouts/ContentPageLayout";
 import DeveloperCard from "../components/developers/DeveloperCard";
-import { getDevelopers } from "../libs/getDevelopers";
+import { getDevelopers } from "../libs/getDevelopers.js";
 
 function BackEndPage({backend}) {
 
@@ -11,7 +11,7 @@ function BackEndPage({backend}) {
             {backend.map(dev=> 
                 <DeveloperCard 
                 key={dev.id} 
-                fullName={dev.full_name}
+                fullName={dev.fullName}
                 avatar={dev.avatar} 
                 jobTitle={dev.jobTitle} 
                 experience={dev.experience}
@@ -38,8 +38,8 @@ BackEndPage.getLayout = function getLayout(page){
 }
 
 export async function getStaticProps(content){
-    const dev = await getDevelopers();
-    const backendDevs = dev.filter(dev => dev.type === 'back-end')
+    const devs = await getDevelopers();
+    const backendDevs = devs.filter(dev => dev.type === 'back-end developer')
 
 
     // console.log("Server Code")

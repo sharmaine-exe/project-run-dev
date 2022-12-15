@@ -5,7 +5,7 @@ import {getDevelopers} from '../../libs/getDevelopers.js'
 import {generateRandomTitle} from '../../libs/generateRandomTitle.js'
 
 function SingleDeveloperPage({ avatar, fullName, city, heading, ...bio}) {
-    console.log(avatar, fullName, city, heading)
+    //console.log(avatar, fullName, city, heading)
         return (
         <div className="max-w-2xl mx-auto py-20">
             <BioNavigation avatar={avatar} fullName={fullName} />
@@ -20,7 +20,7 @@ function SingleDeveloperPage({ avatar, fullName, city, heading, ...bio}) {
     export async function getStaticPaths() {
         const devs = await getDevelopers();
         const paths = devs.map((dev) => ({ params: { uid: dev.uid } }));
-        console.log(devs)
+        // console.log(devs)
         return {
             paths,
             fallback: false,
