@@ -1,8 +1,6 @@
-import path from 'path'
-import {promises as fs} from 'fs'
-
 import ContentPageLayout from "../components/layouts/ContentPageLayout";
 import DeveloperCard from "../components/developers/DeveloperCard";
+import { getDevelopers } from "../libs/getDevelopers";
 
 function UiUxPage({ui}) {
 
@@ -18,6 +16,7 @@ function UiUxPage({ui}) {
                 jobTitle={dev.jobTitle} 
                 experience={dev.experience}
                 available={dev.available}
+                uid={dev.uid}
                 /> 
             )}
         </>
@@ -41,9 +40,7 @@ UiUxPage.getLayout = function getLayout(page){
 // getStaticProps functionality
 
 export async function getStaticProps(content){
-    const filePath = path.join(process.cwd(), './mock/developers.json')
-    const dev = JSON.parse(await fs.readFile(filePath, 'utf-8'))
-
+    const dev = await getDevelopers();
     const uiDevs = dev.filter(dev => dev.type === 'ui ux')
 
 

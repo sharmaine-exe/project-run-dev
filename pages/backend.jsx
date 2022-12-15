@@ -1,8 +1,6 @@
-import path from 'path'
-import {promises as fs} from 'fs'
-
 import ContentPageLayout from "../components/layouts/ContentPageLayout";
 import DeveloperCard from "../components/developers/DeveloperCard";
+import { getDevelopers } from "../libs/getDevelopers";
 
 function BackEndPage({backend}) {
 
@@ -18,6 +16,7 @@ function BackEndPage({backend}) {
                 jobTitle={dev.jobTitle} 
                 experience={dev.experience}
                 available={dev.available}
+                uid={dev.uid}
                 /> 
             )}
         </>
@@ -39,9 +38,7 @@ BackEndPage.getLayout = function getLayout(page){
 }
 
 export async function getStaticProps(content){
-    const filePath = path.join(process.cwd(), './mock/developers.json')
-    const dev = JSON.parse(await fs.readFile(filePath, 'utf-8'))
-
+    const dev = await getDevelopers();
     const backendDevs = dev.filter(dev => dev.type === 'back-end')
 
 

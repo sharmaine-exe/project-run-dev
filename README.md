@@ -345,6 +345,8 @@ Make sure to map the properties out in the page you're woking on:
     )}
 </>
 ```
+### Part 6: Adding single item page for each developer
+
 
 
 
